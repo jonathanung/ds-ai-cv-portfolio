@@ -1,5 +1,20 @@
 export default function Home() {
-  const projects = [
+  interface Project {
+    title: string;
+    description: string;
+    sourceUrl?: string;
+    reportUrl?: string;
+  }
+
+  interface Course {
+    code: string;
+    name: string;
+    term: string;
+    description: string;
+    items: string[];
+  }
+
+  const projects : Project[] = [
     {
       title: 'Traffic YOLO Analysis',
       description: 'A CNN-based web app for classifying images into categories.',
@@ -10,6 +25,37 @@ export default function Home() {
       title: 'BlackjackNN',
       description: 'A neural network for playing blackjack.',
       sourceUrl: 'https://github.com/jonathanung/blackjacknn',
+    },
+  ];
+
+  const courses : Course[] = [
+    {
+      code: 'STAT 260',
+      name: 'Intro R for Data Science',
+      term: 'Spring 2025',
+      description: 'Introduction to R programming for data science.',
+      items: ['Data visualization', 'Statistical analysis', 'Data wrangling'],
+    },
+    {
+      code: 'CMPT 310',
+      name: 'Introduction to Artificial Intelligence',
+      term: 'Spring 2025',
+      description: 'Overview of AI principles and techniques. Built Q-learning agent and tuned neural networks hyperparameters.',
+      items: ['Search algorithms', 'Constraint satisfaction', 'Markov decision processes', 'Reinforcement learning', 'Neural networks'],
+    },
+    {
+      code: 'CMPT 353',
+      name: 'Computational Data Science',
+      term: 'Spring 2025',
+      description: 'Data analysis and basic machine learning using python libraries. Built a data analysis pipeline for a real-world dataset on traffic light analysis.',
+      items: ['Data analysis', 'Machine learning', 'Data wrangling', 'ETL'],
+    },
+    {
+      code: 'CMPT 361',
+      name: 'Introduction to Computer Vision and Computer Graphics',
+      term: 'Spring 2025',
+      description: 'Study of computer vision algorithms and their implementations, along with computer graphics algorithms. Built panorama stitching and feature detection, along with basic WebGL 2D rasterizer and 3D renderer.',
+      items: ['Computer vision', 'Computer graphics'],
     },
   ];
 
@@ -47,14 +93,36 @@ export default function Home() {
                   className="text-purple-400 hover:underline"
                   target="_blank"
                   rel="noopener noreferrer"
-              >
-                Report / Analysis
-              </a>
-            )}
+                >
+                  Report / Analysis
+                </a>
+              )}
             </div>
           </li>
         ))}
       </ul>
+      <section className="mt-12">
+        <h1 className="text-4xl font-bold text-purple-400 mb-4">Completed Coursework</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {courses.map((course) => (
+            <div
+              key={course.code}
+              className="border border-gray-700 p-4 rounded-md hover:border-purple-400 transition"
+            >
+              <h2 className="text-xl font-semibold text-purple-300 mb-2">
+                {course.code}: {course.name}
+              </h2>
+              <p className="text-gray-300"><strong>Term:</strong> {course.term}</p>
+              <p className="text-gray-300 mb-2">{course.description}</p>
+              <ul className="list-disc list-inside text-gray-200 mt-2 space-y-1">
+                {course.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
