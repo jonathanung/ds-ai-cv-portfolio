@@ -48,7 +48,7 @@ export default function Home() {
       name: 'Computational Data Science',
       term: 'Spring 2025',
       description: 'Data analysis and basic machine learning using python libraries. Built a data analysis pipeline for a real-world dataset on traffic light analysis.',
-      items: ['Data analysis', 'Machine learning', 'Data wrangling', 'ETL'],
+      items: ['Data analysis pipeline', 'Machine learning', 'ETL', 'Big Data'],
     },
     {
       code: 'CMPT 361',
